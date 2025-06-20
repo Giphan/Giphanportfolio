@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giphan Kipngeno | Digital Creator</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+    header {
+      padding: 80px 20px 60px;
+      text-align: center;
+      background: linear-gradient(135deg, #008080, #20c997);
+      color: white;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-left: 6px solid #20c997;
+      padding-left: 10px;
+    }
+    .project {
+      margin-bottom: 40px;
+    }
+    .project h3 {
+      margin-bottom: 5px;
+      color: #008080;
+    }
+    .project p {
+      margin: 5px 0 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #eee;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hello 👋, I am Giphan Kipngeno</h1>
+    <p>I am a young, passionate Kenyan who believes technology is the next step toward a better world. I create websites and apps that are clean, human-centered, and built to solve real problems.</p>
+  </header>
+
+  <section>
+    <h2>Who is Giphan?</h2>
+    <p>Giphan is a digital creator driven by the belief that tech can shape lives and create opportunities.</p>
+    <p>I focus on building websites and applications that are more than just functional — they are intuitive, thoughtful, and meaningful. Whether it is a cultural travel guide or a healthcare tool, I build with real people in mind.</p>
+  </section>
+
+  <section>
+    <h2>What I Do</h2>
+    <ul>
+      <li><strong>Web Development:</strong> Responsive, modern websites that work on any device</li>
+      <li><strong>UX & Interface Design:</strong> Interfaces that feel smooth, fast, and easy to use</li>
+      <li><strong>App Prototyping:</strong> Simple, clean UI concepts for mobile-first users</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h3>MediLine — Online Health Clinic Landing Page</h3>
+      <p><strong>Overview:</strong> A modern, responsive website built for a fictional online clinic offering virtual consultations, pharmacy delivery, and health information.</p>
+      <p><strong>Key Features:</strong> Clean layout, CTA buttons, service sections, and contact info.</p>
+    </div>
+
+    <div class="project">
+      <h3>CareConnect — Doctor Appointment Booking System</h3>
+      <p><strong>Overview:</strong> A scheduling system that allows users to book visits with healthcare providers online.</p>
+      <p><strong>Key Features:</strong> Time-slot selection, doctor profiles, mobile-friendly interface.</p>
+    </div>
+
+    <div class="project">
+      <h3>MindTrack — Mental Health Journal & Mood Tracker</h3>
+      <p><strong>Overview:</strong> A calming space for users to track emotions and journal thoughts daily.</p>
+      <p><strong>Key Features:</strong> Mood emojis, secure entries, minimalist design.</p>
+    </div>
+
+    <div class="project">
+      <h3>Healthwise — Patient Education Portal</h3>
+      <p><strong>Overview:</strong> A blog-style platform with health tips and guides to help users live better.</p>
+      <p><strong>Key Features:</strong> Articles, categories, and mobile-first readability.</p>
+    </div>
+
+    <div class="project">
+      <h3>My Kenya — Cultural & Travel Discovery Site</h3>
+      <p><strong>Overview:</strong> A visual journey through Kenya’s beauty, traditions, and destinations.</p>
+      <p><strong>Key Features:</strong> Visual storytelling, image galleries, future Swahili/English toggle.</p>
+    </div>
+
+    <div class="project">
+      <h3>My Tech Journey — Personal Timeline Website</h3>
+      <p><strong>Overview:</strong> A one-page story of my growth as a Kenyan tech creator.</p>
+      <p><strong>Key Features:</strong> Scroll-based milestones, clean timeline design, optional blog posts.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Want to work together or connect?<br />
+    Email me at: <strong>giphankipngeno@email.com</strong></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Giphan Kipngeno — Built with passion in Kenya 🇰🇪<br />
+    Tech is the bridge. I am just getting started.
+  </footer>
+</body>
+</html>
+
