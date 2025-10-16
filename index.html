@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ======= Meta & SEO ======= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giphan Kipngeno | Web Developer</title>
+  <meta name="description" content="Giphan Kipngeno | Front-end Developer & UX Designer Portfolio" />
+  <meta property="og:title" content="Giphan Kipngeno Portfolio" />
+  <meta property="og:description" content="Portfolio showcasing web development and UX design projects by Giphan Kipngeno." />
+  <meta property="og:image" content="assets/og-preview.jpg" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <!-- ======= Fonts & Icons ======= -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-i9bb0Fi0nXrqbXWWAsq7Gmm9t0VvJocHncowjvDEYZMc0i4kep/3XnwrxImOOH5D+iAzCDb9nqaf+FkTZs0zVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- ======= AOS Animations ======= -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- ======= Styles ======= -->
+  <style>
+    /* ---------- Reset & Base ---------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      transition: background-color .3s ease, color .3s ease;
+    }
+
+    /* ---------- Loader ---------- */
+    #loader {
+      position: fixed; inset: 0;
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10000;
+      transition: opacity .6s ease;
+    }
+    #loader.fade { opacity: 0; pointer-events: none; }
+    .spinner {
+      width: 50px; height: 50px;
+      border: 6px solid #eee;
+      border-top: 6px solid #00adb5;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---------- Header & Nav ---------- */
+    header {
+      background-color: #1e1e2f;
+      color: #fff;
+      padding: 20px;
+      position: sticky; top: 0; z-index: 999;
+    }
+    header h1 { font-size: 2.5rem; margin-bottom: 5px; }
+    header p { font-size: 1.1rem; opacity: 0.9; }
+
+    nav {
+      margin-top: 15px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px;
+    }
+    .nav-toggle { display: none; flex-direction: column; cursor: pointer; margin: 10px auto 0; }
+    .nav-toggle div { width: 25px; height: 3px; background-color: #fff; margin: 4px 0; transition: 0.4s; }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .nav-links a, .btn {
+      background: #00adb5; color: #fff; text-decoration: none;
+      padding: 10px 15px; border-radius: 5px; font-weight: bold; cursor: pointer;
+    }
+    .nav-links a:hover, .btn:hover { background: #01959c; }
+    .nav-links a.current { background: #01959c; }
+    .btn { margin-top: 10px; }
+
+    /* ---------- Sections & Cards ---------- */
+    section { max-width: 900px; margin: 50px auto; padding: 20px; }
+    h2 { color: #222; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+    h2 i { color: #00adb5; }
+    ul { padding-left: 20px; margin-top: 10px; }
+    .card {
+      background: #fff; padding: 20px; margin-top: 20px;
+      border-left: 6px solid #00adb5;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+    .card img { width: 100%; border-radius: 6px; margin-bottom: 15px; }
+
+    /* ---------- Skill Bars ---------- */
+    .skill-bar { background: #ddd; border-radius: 20px; overflow: hidden; margin-bottom: 20px; height: 25px; }
+    .bar-fill {
+      background: #00adb5; color: #fff; height: 100%; text-align: right; padding-right: 10px;
+      line-height: 25px; font-weight: bold; border-radius: 20px; animation: fillBar 2s ease forwards;
+    }
+    @keyframes fillBar { from { width: 0; } }
+
+    /* ---------- Filter Buttons ---------- */
+    .filter-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+    .filter-btn {
+      background: #e2e6ea; border: none; padding: 8px 14px; border-radius: 5px; cursor: pointer; font-weight: 600;
+      transition: background .25s ease;
+    }
+    .filter-btn.active { background: #00adb5; color: #fff; }
+
+    /* ---------- Contact Form ---------- */
+    .contact-form { display: flex; flex-direction: column; gap: 12px; max-width: 500px; }
+    .contact-form input, .contact-form textarea {
+      padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; font-size: 1rem;
+    }
+    .contact-form button { align-self: flex-start; }
+
+    /* ---------- Back-to-Top Button ---------- */
+    #toTop {
+      position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px;
+      background: #00adb5; color: #fff; border: none; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 2px 6px rgba(0,0,0,.2);
+      opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s ease;
+      z-index: 998;
+    }
+    #toTop.show { opacity: 1; visibility: visible; }
+
+    /* ---------- Dark Mode ---------- */
+    .dark-mode { background-color: #121212; color: #f5f5f5; }
+    .dark-mode header { background-color: #000; }
+    .dark-mode .btn, .dark-mode .nav-links a { background: #bb86fc; }
+    .dark-mode .card { background: #1f1f1f; color: #f0f0f0; border-left-color: #bb86fc; }
+    .dark-mode footer { color: #aaa; }
+
+    /* ---------- Media Queries ---------- */
+    @media (max-width: 768px) {
+      nav { flex-direction: column; align-items: center; }
+      .nav-links { display: none; flex-direction: column; gap: 10px; width: 100%; margin-top: 15px; }
+      .nav-links.show { display: flex; }
+      .nav-toggle { display: flex; }
+      header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ======= Loading Overlay ======= -->
+  <div id="loader"><div class="spinner"></div></div>
+
+  <!-- ======= Header ======= -->
+  <header data-aos="fade-down">
+    <h1>Giphan Kipngeno</h1>
+    <p>Web Developer & Interface Designer</p>
+    <div class="nav-toggle" id="navToggle">
+      <div></div><div></div><div></div>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about"><i class="fa-solid fa-user"></i> About</a>
+      <a href="#skills"><i class="fa-solid fa-code"></i> Skills</a>
+      <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="#testimonials"><i class="fa-solid fa-quote-left"></i> Testimonials</a>
+      <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+      <button id="themeToggle" class="btn">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <!-- ======= About ======= -->
+  <section id="about" data-aos="fade-up">
+    <h2><i class="fa-solid fa-user"></i> About Me</h2>
+    <p>
+      I architect responsive, high-performance websites using modern technologies and clean, scalable code. My focus is on frontend engineering and UI/UX principles that translate ideas into fast, accessible, and aesthetically pleasing digital experiences.
+    </p>
+    <p>
+      I believe that great websites go beyond functionality—they're intuitive, thoughtful, and user-driven. Whether it’s a portfolio site, an e-commerce platform, or a conversion-focused landing page, I deliver performant interfaces that feel natural on any device.
+    </p>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <h3>What I Do Best</h3>
+      <ul>
+        <li><strong>Web Development & UX:</strong> Responsive, modern websites for every device.</li>
+        <li><strong>Interface Design:</strong> Smooth, fast, intuitive user experiences.</li>
+        <li><strong>App Prototyping:</strong> Clean, mobile-first UI concepts using tools like Figma.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======= Skills ======= -->
+  <section id="skills" data-aos="fade-up">
+    <h2><i class="fa-solid fa-code"></i> Tech Skills</h2>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <div><i class="fa-brands fa-html5"></i> <strong>HTML5</strong></div>
+      <div class="skill-bar"><div class="bar-fill" style="width: 95%">95%</div></div>
+      <div><i class="fa-brands fa-css3-alt"></i> <strong>CSS3</strong></div>
+      <div class="skill-bar"><div class="bar-fill" style="width: 90%">90%</div></div>
+
+      <div><i class="fa-brands fa-js"></i> <strong>JavaScript</strong></div>
+      <div class="skill-bar"><div class="bar-fill" style="width: 85%">85%</div></div>
+
+      <div><i class="fa-brands fa-figma"></i> <strong>Figma</strong></div>
+      <div class="skill-bar"><div class="bar-fill" style="width: 80%">80%</div></div>
+    </div>
+  </section>
+
+  <!-- ======= Projects ======= -->
+  <section id="projects" data-aos="fade-up">
+    <h2><i class="fa-solid fa-diagram-project"></i> Selected Projects</h2>
+    <p style="text-align:center; margin-bottom:20px">Here’s a selection of projects I’ve built—each crafted to solve a real problem, look sharp, and perform beautifully.</p>
+    <div class="filter-btns">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="design">Design</button>
+      <button class="filter-btn" data-filter="prototype">Prototype</button>
+    </div>
+
+    <div class="card" data-category="web" data-aos="fade-up" data-aos-delay="50">
+      <img src="https://via.placeholder.com/800x500.png?text=Portfolio+Website" alt="Personal Portfolio Screenshot" />
+      <h3>Personal Portfolio Website</h3>
+      <p>A clean, responsive site that highlights my bio, skills, and work. Includes a dark mode toggle and smooth animations.</p>
+    </div>
+
+    <div class="card" data-category="web" data-aos="fade-up" data-aos-delay="100">
+      <img src="https://via.placeholder.com/800x500.png?text=Product+Landing+Page" alt="Landing Page Screenshot" />
+      <h3>Product Landing Page</h3>
+      <p>A layout-focused responsive page designed for a fictional startup. Features strong CTAs and mobile-first design.</p>
+    </div>
+
+    <div class="card" data-category="prototype" data-aos="fade-up" data-aos-delay="150">
+      <img src="https://via.placeholder.com/800x500.png?text=Interactive+Quiz+App" alt="Quiz App Screenshot" />
+      <h3>Interactive Quiz App</h3>
+      <p>Users answer questions and get feedback in real time. Built with JavaScript, DOM manipulation, and performance in mind.</p>
+    </div>
+
+    <div class="card" data-category="web" data-aos="fade-up" data-aos-delay="200">
+      <img src="https://via.placeholder.com/800x500.png?text=To-Do+Tracker+App" alt="To-Do Tracker Screenshot" />
+      <h3>To-Do Tracker App</h3>
+      <p>A task manager app with full CRUD functionality using pure JavaScript. Data stored in browser local storage.</p>
+    </div>
+  </section>
+
+  <!-- ======= Testimonials ======= -->
+  <section id="testimonials" data-aos="fade-up">
+    <h2><i class="fa-solid fa-quote-left"></i> What Clients Say</h2>
+    <div class="card" data-aos="fade-up" data-aos-delay="50">
+      <p>"Giphan Kipngeno is an exceptional developer—fast, reliable, and super detail-oriented. My website turned out better than I imagined!"</p>
+      <p><strong>— Jessica M., Founder at GlowSphere</strong></p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <p>"I needed someone who could not only build but understand good UX. Giphan totally nailed both—smooth experience from start to finish."</p>
+      <p><strong>— Karim O., Product Designer</strong></p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="150">
+      <p>"Professional, on time, and always one step ahead. Giphan turned my messy vision into a clean, modern app interface."</p>
+      <p><strong>— Amara T., Indie App Creator</strong></p>
+    </div>
+  </section>
+
+  <!-- ======= Contact ======= -->
+  <section id="contact" data-aos="fade-up">
+    <h2><i class="fa-solid fa-envelope"></i> Contact Me</h2>
+    <form action="https://formspree.io/f/mwkgeqjp" method="POST" class="contact-form" data-aos="fade-up" data-aos-delay="50">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="_replyto" placeholder="Your Email" required />
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <p style="margin-top:15px">You can also reach me directly<strong> on fiverr s</strong></p>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer data-aos="fade-up">© 2025 Giphan Kipngeno. Built with clean code & creativity.</footer>
+
+  <!-- small learning note from original moved inside body -->
+
+  <!-- ======= Scripts ======= -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 700 });
+    // 🌗 Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const bodyEl = document.body;
+    themeToggle.addEventListener('click', () => bodyEl.classList.toggle('dark-mode'));
+
+    // 🍔 Nav menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+    // 🧭 Highlight current section in nav
+    const sections = document.querySelectorAll('section');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => a.classList.remove('current'));
+          const id = entry.target.getAttribute('id');
+          const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+          if (activeLink) activeLink.classList.add('current');
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(sec => io.observe(sec));
+
+    // 🧠 Project multi-filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('[data-category]');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.dataset.filter === 'all') {
+          filterButtons.forEach(b => b.classList.remove('active')); btn.classList.add('active');
+        } else {
+          document.querySelector('.filter-btn[data-filter="all"]').classList.remove('active');
+          btn.classList.toggle('active');
+          // if no filter selected, reset to 'all'
+          if (![...filterButtons].some(b => b.classList.contains('active'))) {
+            document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+          }
+        }
+        applyFilter();
+      });
+    });
+    const applyFilter = () => {
+      const active = [...filterButtons].filter(b => b.classList.contains('active')).map(b => b.dataset.filter);
+      if (active.includes('all')) {
+        projectCards.forEach(c => c.style.display = 'block');
+      } else {
+        projectCards.forEach(card => {
+          const cat = card.dataset.category.split(' ');
+          card.style.display = active.some(f => cat.includes(f)) ? 'block' : 'none';
+        });
+      }
+    };
+
+    // ⬆ Back to Top button
+    const toTop = document.createElement('button');
+    toTop.id = 'toTop';
+    toTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    document.body.appendChild(toTop);
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) toTop.classList.add('show'); else toTop.classList.remove('show');
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ⏳ Loader fade out
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {
+      setTimeout(() => loader.classList.add('fade'), 400);
+    });
+  </script>
+</body>
+</html>
